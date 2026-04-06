@@ -1,288 +1,107 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¡Tu compra fue exitosa! — Tu Intestino Sano</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intestino Sano | Guía Práctica por Gastón García</title>
+    <meta name="description" content="Recupera tu bienestar digestivo con métodos probados.">
+    <meta name="author" content="Gastón García">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
-  :root {
-    --verde: #2d6a4f;
-    --verde-claro: #52b788;
-    --verde-suave: #d8f3dc;
-    --crema: #faf7f2;
-    --texto: #1a2e1e;
-    --texto-suave: #4a6650;
-  }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background-color: var(--crema);
-    color: var(--texto);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1rem;
-    background-image: radial-gradient(ellipse at 20% 20%, #b7e4c720 0%, transparent 60%),
-                      radial-gradient(ellipse at 80% 80%, #52b78810 0%, transparent 60%);
-  }
-
-  .card {
-    background: white;
-    border-radius: 24px;
-    max-width: 560px;
-    width: 100%;
-    padding: 3rem 2.5rem;
-    box-shadow: 0 8px 48px rgba(45,106,79,0.10);
-    text-align: center;
-    animation: fadeUp 0.7s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .check-circle {
-    width: 72px;
-    height: 72px;
-    background: var(--verde-suave);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    animation: popIn 0.5s 0.3s cubic-bezier(.34,1.56,.64,1) both;
-  }
-
-  @keyframes popIn {
-    from { transform: scale(0); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-
-  .check-circle svg {
-    width: 36px;
-    height: 36px;
-    stroke: var(--verde);
-    stroke-width: 2.5;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .badge {
-    display: inline-block;
-    background: var(--verde-suave);
-    color: var(--verde);
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.35rem 1rem;
-    border-radius: 100px;
-    margin-bottom: 1.2rem;
-  }
-
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--texto);
-    line-height: 1.2;
-    margin-bottom: 0.8rem;
-  }
-
-  h1 span {
-    color: var(--verde);
-  }
-
-  .subtitulo {
-    color: var(--texto-suave);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-
-  .divider {
-    width: 48px;
-    height: 3px;
-    background: var(--verde-claro);
-    border-radius: 2px;
-    margin: 0 auto 2rem;
-  }
-
-  .libro-card {
-    background: var(--verde-suave);
-    border-radius: 16px;
-    padding: 1.4rem 1.6rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    text-align: left;
-  }
-
-  .libro-icon {
-    font-size: 2.4rem;
-    flex-shrink: 0;
-  }
-
-  .libro-info strong {
-    display: block;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--texto);
-    margin-bottom: 0.2rem;
-  }
-
-  .libro-info span {
-    font-size: 0.85rem;
-    color: var(--texto-suave);
-  }
-
-  .btn-descarga {
-    display: block;
-    width: 100%;
-    background: var(--verde);
-    color: white;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 500;
-    padding: 1rem 1.5rem;
-    border-radius: 14px;
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: background 0.2s, transform 0.15s;
-    margin-bottom: 1rem;
-  }
-
-  .btn-descarga:hover {
-    background: #1e4d38;
-    transform: translateY(-2px);
-  }
-
-  .nota {
-    font-size: 0.82rem;
-    color: #8aab92;
-    line-height: 1.5;
-    margin-bottom: 2rem;
-  }
-
-  .pasos {
-    background: #f4faf6;
-    border-radius: 14px;
-    padding: 1.4rem 1.6rem;
-    text-align: left;
-    margin-bottom: 1.5rem;
-  }
-
-  .pasos h3 {
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--verde);
-    margin-bottom: 1rem;
-  }
-
-  .paso {
-    display: flex;
-    gap: 0.8rem;
-    align-items: flex-start;
-    margin-bottom: 0.7rem;
-  }
-
-  .paso:last-child { margin-bottom: 0; }
-
-  .paso-num {
-    width: 22px;
-    height: 22px;
-    background: var(--verde);
-    color: white;
-    border-radius: 50%;
-    font-size: 0.72rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .paso p {
-    font-size: 0.88rem;
-    color: var(--texto-suave);
-    line-height: 1.5;
-  }
-
-  .footer-marca {
-    font-size: 0.8rem;
-    color: #aac4b0;
-    margin-top: 1.5rem;
-  }
-
-  .footer-marca strong {
-    color: var(--verde);
-  }
-
-  @media (max-width: 480px) {
-    .card { padding: 2rem 1.4rem; }
-    h1 { font-size: 1.6rem; }
-  }
-</style>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; margin: 0; overflow-x: hidden; }
+        h1 { font-family: 'Space Grotesk', sans-serif; }
+        .reveal { opacity: 0; transform: translateY(30px); }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #6ee7b7 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-pay {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+        }
+        .btn-pay:hover { transform: scale(1.05); box-shadow: 0 20px 30px -5px rgba(16, 185, 129, 0.5); }
+        #tsparticles { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
+        
+        /* Forzamos la desaparición de cualquier elemento inyectado externamente */
+        [id*="lovable"], [class*="lovable"], iframe[src*="lovable"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center p-6">
 
-<div class="card">
+    <div id="tsparticles"></div>
 
-  <div class="check-circle">
-    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-  </div>
+    <main class="glass-card reveal max-w-2xl w-full p-8 md:p-12 text-center shadow-2xl z-10">
+        <header class="mb-8">
+            <span class="text-emerald-400 font-bold uppercase tracking-widest text-sm border border-emerald-400/20 px-4 py-1 rounded-full bg-emerald-400/5">
+                Acceso Inmediato
+            </span>
+        </header>
 
-  <div class="badge">✦ Pago confirmado</div>
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-white">
+            Tu camino a un <span class="text-gradient">Intestino Sano</span>
+        </h1>
 
-  <h1>¡Tu compra fue <span>exitosa!</span> 🎉</h1>
-  <p class="subtitulo">Gracias por confiar en <strong>Tu Intestino Sano</strong>. Tu guía está lista para descargar ahora mismo.</p>
+        <p class="text-slate-400 text-lg md:text-xl mb-10 leading-relaxed">
+            Adquirí la guía definitiva y empezá hoy mismo a transformar tu salud digestiva con métodos probados.
+        </p>
 
-  <div class="divider"></div>
+        <div class="space-y-6">
+            <a href="https://www.mercadopago.com.ar/checkout/v1/payment/redirect/219ecb50-edeb-4e9e-997c-e5bc77c008df/payment-option-form/?source=link&preference-id=684332173-ae260c06-beec-4c1e-a6be-8b24173518d5&router-request-id=81e88c88-2e5a-420a-9d11-9860f07e4792&p=0aca0b046d91866b1bccfe5f249c5b5e" 
+               class="btn-pay inline-block w-full py-5 rounded-2xl text-white font-extrabold text-xl">
+                Comprar por Mercado Pago
+            </a>
+            
+            <p class="text-slate-500 text-sm flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                Transacción segura — Envío digital al instante
+            </p>
+        </div>
 
-  <div class="libro-card">
-    <div class="libro-icon">📗</div>
-    <div class="libro-info">
-      <strong>Tu Intestino Sano — Guía completa</strong>
-      <span>Protocolo de 21 días · Método antiinflamatorio · PDF digital</span>
-    </div>
-  </div>
+        <footer class="mt-12 pt-8 border-t border-white/5">
+            <p class="text-xs text-slate-600 uppercase tracking-widest font-semibold">
+                Desarrollado por Gastón García
+            </p>
+        </footer>
+    </main>
 
-  <a class="btn-descarga" href="https://drive.google.com/file/d/1QNKlndgTrutCkE76HngFLbU7KL5C8Zjt/view?usp=sharing" target="_blank">
-    ⬇️ &nbsp; Descargar mi E.Book ahora
-  </a>
+    <script>
+        // Animación de entrada cinematográfica
+        window.addEventListener('load', () => {
+            gsap.to(".reveal", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" });
+        });
 
-  <p class="nota">El archivo se abre en Google Drive. Desde ahí podés descargarlo o guardarlo en tu teléfono. Si tenés algún inconveniente escribinos a Instagram <strong>@BienestarInterior.Ar</strong></p>
-
-  <div class="pasos">
-    <h3>¿Cómo guardo el PDF en mi celular?</h3>
-    <div class="paso">
-      <div class="paso-num">1</div>
-      <p>Tocá el botón de descarga de arriba</p>
-    </div>
-    <div class="paso">
-      <div class="paso-num">2</div>
-      <p>En Google Drive, tocá los tres puntos ··· arriba a la derecha</p>
-    </div>
-    <div class="paso">
-      <div class="paso-num">3</div>
-      <p>Seleccioná <strong>"Descargar"</strong> y el PDF quedará guardado en tu dispositivo</p>
-    </div>
-  </div>
-
-  <p class="footer-marca">Con amor digestivo 💚 — <strong>BienestarInterior.Ar</strong></p>
-
-</div>
-
+        // Partículas dinámicas (Más visibles)
+        tsParticles.load("tsparticles", {
+            particles: {
+                color: { value: "#10b981" },
+                links: { color: "#10b981", distance: 150, enable: true, opacity: 0.3, width: 1 },
+                move: { enable: true, speed: 0.8 },
+                number: { value: 45, density: { enable: true, area: 800 } },
+                opacity: { value: 0.4 },
+                size: { value: { min: 1, max: 2 } }
+            },
+            detectRetina: true,
+        });
+    </script>
 </body>
 </html>
