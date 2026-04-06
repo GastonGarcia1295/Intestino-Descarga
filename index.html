@@ -3,105 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intestino Sano | Guía Práctica por Gastón García</title>
-    <meta name="description" content="Recupera tu bienestar digestivo con métodos probados.">
+    <title>¡Compra exitosa! | Bienestar Natural</title>
+    <meta name="description" content="Gracias por tu compra. Tu guía está lista para descargar.">
     <meta name="author" content="Gastón García">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; margin: 0; overflow-x: hidden; }
-        h1 { font-family: 'Space Grotesk', sans-serif; }
-        .reveal { opacity: 0; transform: translateY(30px); }
-        .glass-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f0e8;
+            color: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            overflow-x: hidden;
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #6ee7b7 0%, #10b981 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        /* Fondo botánico */
+        .bg-botanical {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.12;
         }
-        .btn-pay {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
         }
-        .btn-pay:hover { transform: scale(1.05); box-shadow: 0 20px 30px -5px rgba(16, 185, 129, 0.5); }
-        #tsparticles { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
-        
-        /* Forzamos la desaparición de cualquier elemento inyectado externamente */
-        [id*="lovable"], [class*="lovable"], iframe[src*="lovable"] {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
+
+        /* Tilde de éxito */
+        .check-circle {
+            width: 80px;
+            height: 80px;
+            background: #2d8a4e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.8rem;
+            box-shadow: 0 4px 24px rgba(45,138,78,0.25);
+            animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
+        }
+
+        .check-circle svg {
+            width: 40px; height: 40px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e8f5ee;
+            border: 1.5px solid #a8d5b8;
+            color: #2d8a4e;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1.2rem;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .subtitle strong { color: #1a1a1a; }
+
+        /* Card de pasos */
+        .steps-card {
+            background: white;
+            border: 1.5px solid #e0d8cc;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.8rem;
+            text-align: left;
+        }
+
+        .steps-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #2d8a4e;
+            margin-bottom: 1rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid #f0ebe3;
+        }
+
+        .step:last-child { border-bottom: none; }
+
+        .step-num {
+            min-width: 28px;
+            height: 28px;
+            background: #e8f5ee;
+            border: 1.5px solid #a8d5b8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #2d8a4e;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step p {
+            font-size: 0.93rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .step p strong { color: #1a1a1a; }
+
+        /* Botón de descarga */
+        .btn-download {
+            display: block;
+            width: 100%;
+            background: #2d8a4e;
+            color: white;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            padding: 1.1rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 4px 20px rgba(45,138,78,0.3);
+            margin-bottom: 0.8rem;
+        }
+
+        .btn-download:hover {
+            background: #236b3d;
+            transform: translateY(-2px);
+        }
+
+        .secure-note {
+            font-size: 0.82rem;
+            color: #888;
+        }
+
+        /* Divider */
+        hr {
+            border: none;
+            border-top: 1px solid #e0d8cc;
+            margin: 1.8rem 0;
+        }
+
+        footer {
+            font-size: 0.75rem;
+            color: #aaa;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Fade in general */
+        .fade-in {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6">
+<body>
 
-    <div id="tsparticles"></div>
+    <!-- Fondo botánico igual a la landing -->
+    <svg class="bg-botanical" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#5a7a4a" stroke-width="1.5">
+            <ellipse cx="80" cy="150" rx="60" ry="120" transform="rotate(-20 80 150)"/>
+            <ellipse cx="80" cy="150" rx="30" ry="90" transform="rotate(10 80 150)"/>
+            <line x1="80" y1="270" x2="80" y2="400"/>
+            <ellipse cx="1360" cy="200" rx="60" ry="120" transform="rotate(20 1360 200)"/>
+            <ellipse cx="1360" cy="200" rx="30" ry="90" transform="rotate(-10 1360 200)"/>
+            <line x1="1360" y1="320" x2="1360" y2="450"/>
+            <ellipse cx="100" cy="700" rx="50" ry="100" transform="rotate(-15 100 700)"/>
+            <line x1="100" y1="800" x2="100" y2="900"/>
+            <ellipse cx="1380" cy="680" rx="50" ry="100" transform="rotate(15 1380 680)"/>
+            <line x1="1380" y1="780" x2="1380" y2="900"/>
+            <circle cx="200" cy="80" r="35"/>
+            <circle cx="1250" cy="100" r="28"/>
+            <circle cx="150" cy="500" r="20"/>
+            <circle cx="1300" cy="500" r="24"/>
+        </g>
+    </svg>
 
-    <main class="glass-card reveal max-w-2xl w-full p-8 md:p-12 text-center shadow-2xl z-10">
-        <header class="mb-8">
-            <span class="text-emerald-400 font-bold uppercase tracking-widest text-sm border border-emerald-400/20 px-4 py-1 rounded-full bg-emerald-400/5">
-                Acceso Inmediato
-            </span>
-        </header>
+    <div class="container fade-in">
 
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-white">
-            Tu camino a un <span class="text-gradient">Intestino Sano</span>
-        </h1>
-
-        <p class="text-slate-400 text-lg md:text-xl mb-10 leading-relaxed">
-            Adquirí la guía definitiva y empezá hoy mismo a transformar tu salud digestiva con métodos probados.
-        </p>
-
-        <div class="space-y-6">
-            <a href="https://www.mercadopago.com.ar/checkout/v1/payment/redirect/219ecb50-edeb-4e9e-997c-e5bc77c008df/payment-option-form/?source=link&preference-id=684332173-ae260c06-beec-4c1e-a6be-8b24173518d5&router-request-id=81e88c88-2e5a-420a-9d11-9860f07e4792&p=0aca0b046d91866b1bccfe5f249c5b5e" 
-               class="btn-pay inline-block w-full py-5 rounded-2xl text-white font-extrabold text-xl">
-                Comprar por Mercado Pago
-            </a>
-            
-            <p class="text-slate-500 text-sm flex items-center justify-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-                Transacción segura — Envío digital al instante
-            </p>
+        <div class="check-circle">
+            <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
         </div>
 
-        <footer class="mt-12 pt-8 border-t border-white/5">
-            <p class="text-xs text-slate-600 uppercase tracking-widest font-semibold">
-                Desarrollado por Gastón García
-            </p>
-        </footer>
-    </main>
+        <div class="badge">✅ Pago confirmado</div>
 
-    <script>
-        // Animación de entrada cinematográfica
-        window.addEventListener('load', () => {
-            gsap.to(".reveal", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" });
-        });
+        <h1>¡Gracias por tu compra!</h1>
 
-        // Partículas dinámicas (Más visibles)
-        tsParticles.load("tsparticles", {
-            particles: {
-                color: { value: "#10b981" },
-                links: { color: "#10b981", distance: 150, enable: true, opacity: 0.3, width: 1 },
-                move: { enable: true, speed: 0.8 },
-                number: { value: 45, density: { enable: true, area: 800 } },
-                opacity: { value: 0.4 },
-                size: { value: { min: 1, max: 2 } }
-            },
-            detectRetina: true,
-        });
-    </script>
+        <p class="subtitle">
+            Tu guía <strong>Bienestar Natural</strong> ya está disponible. Seguí los pasos a continuación para acceder a tu contenido.
+        </p>
+
+        <div class="steps-card">
+            <p class="steps-title">Cómo acceder a tu guía</p>
+
+            <div class="step">
+                <div class="step-num">1</div>
+                <p>Revisá tu <strong>casilla de email</strong> — te enviamos un correo con el enlace de descarga.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <p>Hacé clic en el botón de abajo para <strong>descargar tu guía en PDF</strong> de forma inmediata.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <p>¿No encontrás el correo? Revisá la carpeta de <strong>spam</strong> o escribinos.</p>
+            </div>
+        </div>
+
+        <a href="https://drive.google.com/file/d/1QNKlndgTrutCkE76HngFLbU7KL5C8Zjt/view?usp=drive_link" class="btn-download">
+            📥 Descargar mi guía ahora
+        </a>
+
+        <p class="secure-note">🔒 Descarga segura · Acceso inmediato</p>
+
+        <hr>
+
+        <footer>Desarrollado por Gastón García</footer>
+
+    </div>
+
 </body>
 </html>
+
